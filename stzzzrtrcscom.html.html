@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>stzzztrcs.com | Rüzgar'ın Dünyası</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #0f172a;
+            color: #f8fafc;
+            line-height: 1.6;
+        }
+
+        /* Sabit Menü Çubuğu */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #334155;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1.2rem;
+            padding: 1rem;
+            z-index: 1000;
+        }
+
+        nav a {
+            color: #94a3b8;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.2s;
+        }
+
+        nav a:hover {
+            color: #38bdf8;
+        }
+
+        header {
+            background: linear-gradient(135deg, #1e293b, #0f172a);
+            padding: 6rem 1rem 3rem 1rem;
+            text-align: center;
+            border-bottom: 2px solid #3b82f6;
+        }
+
+        header h1 {
+            font-size: 2.8rem;
+            color: #38bdf8;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            color: #94a3b8;
+            font-size: 1.2rem;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        section {
+            background: #1e293b;
+            margin-bottom: 2rem;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        section h2 {
+            color: #38bdf8;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid #334155;
+            padding-bottom: 0.5rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .card {
+            background: #0f172a;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid #334155;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: #38bdf8;
+        }
+
+        .card h3 {
+            color: #f1f5f9;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Oyun Arşivi İçin Özel Şık Liste Tasarımı */
+        .game-archive-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .game-item {
+            background: #0f172a;
+            padding: 1.2rem;
+            border-radius: 8px;
+            border: 1px solid #334155;
+            border-left: 4px solid #3b82f6;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .game-item:hover {
+            transform: translateY(-4px);
+            border-color: #38bdf8;
+            border-left-color: #38bdf8;
+        }
+
+        .game-item h4 {
+            color: #38bdf8;
+            font-size: 1.1rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .game-item p {
+            color: #94a3b8;
+            font-size: 0.9rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        .stat-box {
+            background: #0f172a;
+            padding: 1.2rem;
+            border-radius: 8px;
+            border: 1px solid #334155;
+        }
+
+        .stat-box h3 {
+            color: #38bdf8;
+            font-size: 1.8rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .stat-box p {
+            color: #94a3b8;
+            font-size: 0.9rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #ef4444;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 1rem;
+            transition: background 0.2s;
+        }
+
+        .btn:hover {
+            background: #dc2626;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1.5rem;
+            background: #0f172a;
+            color: #64748b;
+            border-top: 1px solid #1e293b;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Akıcı Gezinme Menüsü -->
+    <nav>
+        <a href="#giris">Giriş</a>
+        <a href="#istatistik">İstatistikler</a>
+        <a href="#oyun-arsivi">Oyun Arşivi</a>
+        <a href="#videolar">Videolar</a>
+        <a href="#hobiler">Hobiler</a>
+        <a href="#kanal">Kanal</a>
+        <a href="#hakkimda">Hakkımda</a>
+    </nav>
+
+    <header>
+        <h1>stzzztrcs.com</h1>
+        <p>Rüzgar'ın Oyunlar, Kodlama & İçerik Dünyası</p>
+    </header>
+
+    <div class="container">
+        
+        <section id="giris">
+            <h2>Giriş</h2>
+            <p>Merhaba! Burası benim dijital dünyadaki üssüm. Yeni oyunlar keşfetmeyi, içerikler üretmeyi ve teknolojiyle ilgili şeyler araştırmayı çok seviyorum.</p>
+        </section>
+
+        <!-- İstatistikler & Süre Alanı -->
+        <section id="istatistik">
+            <h2>İstatistikler & Süreler</h2>
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <h3>60+ Saat</h3>
+                    <p>Outlast Deneyimi & Speedrun</p>
+                </div>
+                <div class="stat-box">
+                    <h3 id="timer-count">0s</h3>
+                    <p>Sitede Geçirdiğin Süre</p>
+                </div>
+                <div class="stat-box">
+                    <h3>YouTube</h3>
+                    <p>Video & Rehber Üretimi</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Oyun Arşivi -->
+        <section id="oyun-arsivi">
+            <h2>Oynadığım Oyunlar Arşivi</h2>
+            <p>Masaüstümde yer alan tüm oyunların tam listesi:</p>
+            
+            <div class="game-archive-grid">
+                <div class="game-item">
+                    <h4>Outlast & Outlast 2</h4>
+                    <p>Gerilim ve Korku (60+ Saat)</p>
+                </div>
+                <div class="game-item">
+                    <h4>Alan Wake Remastered</h4>
+                    <p>Korku / Macera</p>
+                </div>
+                <div class="game-item">
+                    <h4>Alan Wake's American Nightmare</h4>
+                    <p>Aksiyon / Korku</p>
+                </div>
+                <div class="game-item">
+                    <h4>Detroit: Become Human</h4>
+                    <p>Hikaye Odaklı</p>
+                </div>
+                <div class="game-item">
+                    <h4>Beyond: Two Souls</h4>
+                    <p>Hikaye / Dram</p>
+                </div>
+                <div class="game-item">
+                    <h4>Heavy Rain</h4>
+                    <p>Gizem / Gerilim</p>
+                </div>
+                <div class="game-item">
+                    <h4>Tomb Raider</h4>
+                    <p>Aksiyon / Macera</p>
+                </div>
+                <div class="game-item">
+                    <h4>VALORANT</h4>
+                    <p>Rekabetçi FPS</p>
+                </div>
+                <div class="game-item">
+                    <h4>Fortnite</h4>
+                    <p>Aksiyon / Battle Royale</p>
+                </div>
+                <div class="game-item">
+                    <h4>Road 96</h4>
+                    <p>Keşif / Yol Hikayesi</p>
+                </div>
+                <div class="game-item">
+                    <h4>Blair Witch</h4>
+                    <p>Psikolojik Korku</p>
+                </div>
+                <div class="game-item">
+                    <h4>Blasphemous</h4>
+                    <p>Metroidvania / Souls-like</p>
+                </div>
+                <div class="game-item">
+                    <h4>Deus Ex: Mankind Divided</h4>
+                    <p>Siberpunk / Aksiyon</p>
+                </div>
+                <div class="game-item">
+                    <h4>Killing Floor 2 & Chivalry 2</h4>
+                    <p>Aksiyon / Savaş</p>
+                </div>
+                <div class="game-item">
+                    <h4>Clash Royale</h4>
+                    <p>Strateji / Mobil</p>
+                </div>
+                <div class="game-item">
+                    <h4>Stumble Guys</h4>
+                    <p>Eğlence / Platform</p>
+                </div>
+                <div class="game-item">
+                    <h4>Mecha Chameleon</h4>
+                    <p>Bağımsız / Platform</p>
+                </div>
+                <div class="game-item">
+                    <h4>Bombana (Demo)</h4>
+                    <p>Özel / Demo Yapım</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Videolar & İçerikler Bölümü -->
+        <section id="videolar">
+            <h2>Videolar & İçerikler Hakkında</h2>
+            <p>YouTube kanalımda ağırlıklı olarak hangi tür içerikleri paylaştığımı aşağıda bulabilirsin:</p>
+            <div class="grid">
+                <div class="card">
+                    <h3>Oyun & Hız Koşuları (Speedrun)</h3>
+                    <p>Outlast gibi gerilim dolu oyunlarda denediğim stratejiler, heyecanlı anlar ve speedrun denemeleri.</p>
+                </div>
+                <div class="card">
+                    <h3>Yazılım & Kurulum Rehberleri</h3>
+                    <p>Bilgisayarında işini kolaylaştıracak program kurulumları (WinRAR, TLauncher vb.) ve faydalı dönüştürücü rehberleri.</p>
+                </div>
+                <div class="card">
+                    <h3>Teknik Çözümler & İpuçları</h3>
+                    <p>Oyunlarda karşılaşılan hatalar, optimizasyon taktikleri ve pratik ipuçları.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="hobiler">
+            <h2>Hobiler & Sosyal Yaşam</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Futbol & Arkadaşlar</h3>
+                    <p>Dışarı çıkıp arkadaşlarla futbol oynamak ve sohbet etmek en büyük enerjim.</p>
+                </div>
+                <div class="card">
+                    <h3>Araştırma & Merak</h3>
+                    <p>Tarih, bilim, sanat ve satranç üzerine yeni şeyler öğrenmeyi seviyorum.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="kanal">
+            <h2>Projelerim & Kanalım</h2>
+            <p>YouTube kanalım için çektiğim rehber videoları, hazırladığım içerikler ve geliştirdiğim küçük web projeleri burada yer alıyor.</p>
+            <div class="card" style="margin-top: 1.5rem;">
+                <h3>YouTube Kanalım (@stzzzTrCs)</h3>
+                <p>Oyun videoları, ipuçları ve içeriklerim için kanalıma göz atabilirsin.</p>
+                <a href="https://www.youtube.com/channel/UCXFSuB9_IFU9rlHouW6RG6A" target="_blank" class="btn">Kanalı Ziyaret Et</a>
+            </div>
+        </section>
+
+        <section id="hakkimda">
+            <h2>Hakkımda</h2>
+            <p>Ben Rüzgar. Teknolojiyi, bilgisayarları, oyun oynamayı ve içerik üretmeyi çok seviyorum. Aynı zamanda kodlama dünyasıyla ilgileniyor, kendi projelerimi geliştiriyor ve bunları YouTube kanalımda paylaşıyorum.</p>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 - stzzztrcs.com | Tüm Hakları Saklıdır.</p>
+    </footer>
+
+    <!-- Canlı Saniye Sayacı İçin JavaScript Kodu -->
+    <script>
+        let seconds = 0;
+        const timerElement = document.getElementById('timer-count');
+        
+        setInterval(() => {
+            seconds++;
+            timerElement.textContent = seconds + 's';
+        }, 1000);
+    </script>
+
+</body>
+</html>
